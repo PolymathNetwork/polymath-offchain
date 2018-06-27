@@ -1,0 +1,7 @@
+{
+  "extends": ["plugin:polymath-react/recommended"],
+  "rules": {
+    "no-console": "off",
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }]
+  }
+}

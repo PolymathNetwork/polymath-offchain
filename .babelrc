@@ -1,0 +1,16 @@
+{
+  "presets": [
+    "flow",
+    "stage-0",
+    ["env", {
+      "targets": {
+        "node": "8"
+      }
+    }]
+  ],
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-class-properties",
+    "transform-react-jsx"
+  ]
+}

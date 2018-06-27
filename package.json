@@ -1,0 +1,60 @@
+{
+  "name": "polymath-offchain",
+  "version": "1.0.0",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "build": "babel src -d dist",
+    "dev": "npm-run-all -p lint:watch start:watch",
+    "lint": "eslint --fix src",
+    "lint:watch": "esw -w --fix src",
+    "precommit": "lint-staged",
+    "postinstall": "npm run build",
+    "start": "node dist/server.js",
+    "start:watch": "nodemon src/server.js --exec babel-node",
+    "typecheck": "flow",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "polymath.network",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@koa/cors": "^2.2.1",
+    "@sendgrid/mail": "^6.2.1",
+    "ddos": "^0.1.30",
+    "eth-sig-util": "^1.4.2",
+    "ethereumjs-util": "^5.1.5",
+    "koa": "^2.5.0",
+    "koa-body": "^2.5.0",
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.0.14",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "web3": "^1.0.0-beta.34",
+    "polymath-core-v1.1.0": "npm:polymath-core@1.1.0",
+    "polymath-core-v1.1.1": "npm:polymath-core@1.1.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-plugin-polymath-react": "github:PolymathNetwork/eslint-plugin-polymath-react#master",
+    "eslint-watch": "^3.1.4",
+    "flow-bin": "^0.69.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.4",
+    "nodemon": "^1.17.3",
+    "npm-run-all": "^4.1.2"
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
