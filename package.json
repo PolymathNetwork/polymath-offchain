@@ -8,7 +8,7 @@
     "dev": "npm-run-all -p lint:watch start:watch",
     "lint": "eslint --fix src",
     "lint:watch": "esw -w --fix src",
-    "precommit": "lint-staged",
+    "precommit": "lint-staged && npm run typecheck && npm run build",
     "postinstall": "npm run build",
     "start": "node dist/server.js",
     "start:watch": "nodemon src/server.js --exec babel-node",
