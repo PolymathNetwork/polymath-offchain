@@ -19,7 +19,7 @@ router.get('/auth/name', (ctx) => {
 
 router.get('/auth/:address', async (ctx) => {
   const code = (await crypto.randomBytes(8)).toString('hex')
-  await AuthCode.create({ address: ctx.params.address, code })
+  await AuthCode.create({ address: ctx.params.address.toLowerCase(), code })
   ctx.body = {
     status: 'ok',
     data: code,
@@ -53,7 +53,7 @@ router.post('/auth', async (ctx) => {
 })
 
 export const auth = async (code: string, sig: string, address: string) => {
-  const authCode = await AuthCode.findOne({ code, address })
+  const authCode = await AuthCode.findOne({ code, address: address.toLowerCase() })
   if (!authCode) {
     return {
       status: 'error',
