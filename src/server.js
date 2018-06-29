@@ -11,6 +11,7 @@ import router from './routes/router'
 
 const ddos = new Ddos
 
+// noinspection JSUnusedGlobalSymbols
 const app = new Koa()
 app
   .use(cors())

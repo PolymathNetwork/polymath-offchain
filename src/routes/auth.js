@@ -52,11 +52,8 @@ router.post('/auth', async (ctx) => {
   }
 })
 
-export const auth = async (code: string, sig: string, address?: string) => {
-  const minCreatedAt = new Date()
-  minCreatedAt.setMinutes(minCreatedAt.getMinutes() - 60)
-
-  const authCode = await AuthCode.findOne({ code, createdAt: { $gte: minCreatedAt } })
+export const auth = async (code: string, sig: string, address: string) => {
+  const authCode = await AuthCode.findOne({ code, address })
   if (!authCode) {
     return {
       status: 'error',
@@ -64,7 +61,7 @@ export const auth = async (code: string, sig: string, address?: string) => {
     }
   }
 
-  if (!isValidSig(code, sig, address || authCode.address)) {
+  if (!isValidSig(code, sig, address)) {
     return {
       status: 'error',
       data: 'Sig is not valid',
