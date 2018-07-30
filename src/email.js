@@ -4,7 +4,7 @@ export default async (email, name, subject, body) => {
   const msg = {
     from: { email: 'noreply@polymath.network', name: 'Polymath Network' },
     reply_to: {
-      email: 'support@polymath.zendesk.com',
+      email: 'tokenstudio@polymath.zendesk.com',
       name: 'Polymath Network',
     },
     to: { email, name },

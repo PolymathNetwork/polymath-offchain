@@ -12,6 +12,7 @@ import sendEmail from '../email'
 import { auth } from './auth'
 import networks from '../networks'
 import ConfirmEmail from '../emails/ConfirmEmail'
+import styles from '../emails/styles'
 
 const router = new Router()
 
@@ -197,7 +198,12 @@ router.post('/email', async (ctx) => {
   }
 
   const user = await User.findOne({ address })
-  await sendEmail(user.email, user.name, subject, body)
+  await sendEmail(
+    user.email,
+    user.name,
+    subject,
+    `<html><head><style>${styles}</style></head><body>${body}</body></html>`
+  )
 
   await Email.create({ txHash })
 

@@ -1,12 +1,11 @@
 export default `
   body {
-    font-family: 'Overpass', sans-serif !important;
+    font: small/1.5 -apple-system, BlinkMacSystemFont, Arial, Helvetica, sans-serif;
     color: #152935;
     font-size: 16px;
   }
   
-  a,
-  h2 a {
+  a {
     color: #3D70B2 !important;
     text-decoration: none;
   }
@@ -24,6 +23,7 @@ export default `
     height: 48px;
     border-bottom: 1px solid #DFE3E6;
     padding-left: 72px;
+    margin-bottom: 24px;
   }
 
   .top-bar img {
@@ -39,6 +39,7 @@ export default `
     line-height: 55px;
     font-weight: 600;
     color: #252E6A;
+    margin-top: 0;
   }
 
   h2 {
@@ -46,6 +47,15 @@ export default `
     line-height: 31px;
     color: #152935;
     font-weight: 600;
+  }
+
+  h4 {
+    color: #3D70B2;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .main-value {
@@ -121,5 +131,22 @@ export default `
   .footer a {
     color: #5A6872 !important;
     margin-left: 40px;
+  }
+
+  .tx {
+    float: left;
+    width: 300px;
+    height: 25px;
+    border-radius: 4px;
+    background-color: #EBF0F7;
+    font-size: 12px;
+    line-height: 25px;
+    padding: 0 16px;
+    margin-top: 6px;
+    text-align: center;
+  }
+
+  .tx a {
+    text-decoration: underline;
   }
 `

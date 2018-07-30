@@ -16,7 +16,7 @@ const ddos = new Ddos
 const app = new Koa()
 app
   .use(cors())
-  .use(koaBody({ jsonLimit: '1kb' }))
+  .use(koaBody())
   .use(koaStatic('.'))
   .use(router.routes())
   .use(router.allowedMethods())

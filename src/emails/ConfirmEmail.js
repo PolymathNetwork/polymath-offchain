@@ -36,7 +36,7 @@ export default ({ pin }: { pin: string }) => (
             </div>
             <h2>
               If you have any questions please contact<br />
-              <a href='mailto:support@polymath.zendesk.com'>support@polymath.zendesk.com</a>
+              <a href='mailto:tokenstudio@polymath.zendesk.com'>tokenstudio@polymath.zendesk.com</a>
             </h2>
           </div>
         </div>
