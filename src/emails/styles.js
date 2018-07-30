@@ -119,7 +119,7 @@ export default `
   }
 
   .footer a {
-    color: #5A6872;
+    color: #5A6872 !important;
     margin-left: 40px;
   }
 `
