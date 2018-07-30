@@ -2,6 +2,7 @@
 
 import Koa from 'koa'
 import koaBody from 'koa-body'
+import koaStatic from 'koa-static'
 import cors from '@koa/cors'
 import mongoose from 'mongoose'
 import Ddos from 'ddos'
@@ -16,6 +17,7 @@ const app = new Koa()
 app
   .use(cors())
   .use(koaBody({ jsonLimit: '1kb' }))
+  .use(koaStatic('.'))
   .use(router.routes())
   .use(router.allowedMethods())
   .use(ddos.koa().bind(ddos))
