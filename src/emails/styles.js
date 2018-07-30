@@ -5,8 +5,9 @@ export default `
     font-size: 16px;
   }
   
-  a {
-    color: #3D70B2;
+  a,
+  h2 a {
+    color: #3D70B2 !important;
     text-decoration: none;
   }
   
@@ -83,12 +84,8 @@ export default `
   }
 
   .icon-text .icon img {
-    vertical-align: middle;
     width: 32px;
     height: 32px;
-    top: 50%;
-    position: relative;
-    margin-top: -18px;
   }
 
   .icon-text h2 {

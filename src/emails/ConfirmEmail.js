@@ -20,7 +20,7 @@ export default ({ pin }: { pin: string }) => (
             <p className='value'>{pin}</p>
           </div>
           <div className='icon-text' style={{ height: '95px' }}>
-            <div className='icon'>
+            <div className='icon' style={{ marginTop: '30px' }}>
               <img alt='Icon' src='https://polymath-offchain.herokuapp.com/img/key.png' />
             </div>
             <h2>Your Polymath account is awaiting activation</h2>
@@ -31,7 +31,7 @@ export default ({ pin }: { pin: string }) => (
             </p>
           </div>
           <div className='icon-text' style={{ height: '52px' }}>
-            <div className='icon'>
+            <div className='icon' style={{ marginTop: '8px' }}>
               <img alt='Icon' src='https://polymath-offchain.herokuapp.com/img/question.png' />
             </div>
             <h2>
