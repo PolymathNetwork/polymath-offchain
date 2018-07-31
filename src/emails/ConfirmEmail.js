@@ -14,31 +14,28 @@ export default ({ pin }: { pin: string }) => (
           <img alt='Polymath Logo' src='https://polymath-offchain.herokuapp.com/img/logo.png' />
         </div>
         <div className='content'>
-          <h1>Activate your Account</h1>
+          <h1>Thank You for Signing Up to Polymath!</h1>
+          <h2>
+            To complete your sign up, please verify your email by entering the following PIN into your Polymath dashboard.
+            If the correct PIN is entered, you will be able to proceed.
+          </h2>
           <div className='main-value'>
             <h2>Your Polymath Verification PIN</h2>
             <p className='value'>{pin}</p>
           </div>
-          <div className='icon-text' style={{ height: '95px' }}>
-            <div className='icon' style={{ marginTop: '30px' }}>
-              <img alt='Icon' src='https://polymath-offchain.herokuapp.com/img/key.png' />
-            </div>
-            <h2>Your Polymath account is awaiting activation</h2>
-            <p>
-              To activate your account, please copy the PIN above into your Polymath account activation page.
-              If you have closed the Polymath account activation page, please visit
-              application again and request new PIN.
-            </p>
-          </div>
           <div className='icon-text' style={{ height: '52px' }}>
-            <div className='icon' style={{ marginTop: '8px' }}>
+            <div className='icon question'>
               <img alt='Icon' src='https://polymath-offchain.herokuapp.com/img/question.png' />
             </div>
             <h2>
-              If you have any questions please contact<br />
+              If you have any questions, please reach out to<br />
               <a href='mailto:tokenstudio@polymath.zendesk.com'>tokenstudio@polymath.zendesk.com</a>
             </h2>
           </div>
+          <h2 className='sincere'>
+            Best,<br />
+            Polymath Support
+          </h2>
         </div>
         <div className='footer'>
           <div className='left'>
