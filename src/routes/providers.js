@@ -4,6 +4,7 @@ import ReactDOMServer from 'react-dom/server'
 import Web3 from 'web3'
 
 import User from '../models/User'
+import Provider from '../models/Provider'
 import sendEmail from '../email'
 import { auth } from './auth'
 import networks from '../networks'
@@ -12,7 +13,7 @@ import ProviderEmail from '../emails/ProviderEmail'
 const router = new Router()
 
 router.post('/providers/apply', async (ctx) => {
-  const { code, sig, address, network, coreVer, companyName } = ctx.request.body
+  const { code, sig, address, network, coreVer, companyName, ids } = ctx.request.body
 
   const error = await auth(code, sig, address)
   if (error) {
@@ -31,14 +32,7 @@ router.post('/providers/apply', async (ctx) => {
       fromBlock: 0,
       toBlock: 'latest',
     })
-    const expiryLimit = await tickerRegistry.methods.expiryLimit().call()
-    let isTickerReserved = false
-    for (let event of events) { // eslint-disable-next-line no-underscore-dangle
-      if ((new Date().getTime() / 1000) < event.returnValues._timestamp + expiryLimit) {
-        isTickerReserved = true
-      }
-    }
-    if (!isTickerReserved) {
+    if (!events.length) {
       // noinspection ExceptionCaughtLocallyJS
       throw new Error()
     }
@@ -50,17 +44,38 @@ router.post('/providers/apply', async (ctx) => {
     return
   }
 
-  await sendEmail(
-    user.email,
-    user.name,
-    `${companyName} is interested in your services`,
-    ReactDOMServer.renderToStaticMarkup(
-      <ProviderEmail
-        issuerName={user.name}
-        application={ctx.request.body}
-      />
+  if (Number(network) === 42) {
+    const providers = await Provider.find({ id: [ids] })
+    for (let provider of providers) {
+      await sendEmail(
+        provider.email,
+        provider.name,
+        `${companyName} is interested in your services`,
+        ReactDOMServer.renderToStaticMarkup(
+          <ProviderEmail
+            issuerName={user.name}
+            providerName={provider.name}
+            issuerEmail={user.email}
+            application={ctx.request.body}
+          />
+        )
+      )
+    }
+  } else {
+    await sendEmail(
+      user.email,
+      user.name,
+      `DEMO: ${companyName} is interested in your services`,
+      ReactDOMServer.renderToStaticMarkup(
+        <ProviderEmail
+          issuerName={user.name}
+          providerName={user.name}
+          issuerEmail={user.email}
+          application={ctx.request.body}
+        />
+      )
     )
-  )
+  }
 
   ctx.body = {
     status: 'ok',
