@@ -45,7 +45,7 @@ router.post('/providers/apply', async (ctx) => {
   }
 
   if (Number(network) === 42) {
-    const providers = await Provider.find({ id: [ids] })
+    const providers = await Provider.find({ id: { $in: [ids] } })
     for (let provider of providers) {
       await sendEmail(
         provider.email,
