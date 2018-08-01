@@ -44,7 +44,7 @@ router.post('/providers/apply', async (ctx) => {
     return
   }
 
-  if (Number(network) === 42) {
+  if (Number(network) === 1) {
     for (let i = 0; i < ids.length; i++) {
       ids[i] = Number(ids[i])
     }
