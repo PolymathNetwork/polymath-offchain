@@ -75,6 +75,8 @@ export default `
   
   .top-bar img {
     margin-top: 11px;
+    width: 188px;
+    height: 29px;
   }
   
   .content {
