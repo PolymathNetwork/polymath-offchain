@@ -57,11 +57,15 @@ router.post('/providers/apply', async (ctx) => {
         ReactDOMServer.renderToStaticMarkup(
           <ProviderEmail
             issuerName={user.name}
-            providerName={provider.name}
             issuerEmail={user.email}
+            providerName={provider.name}
             application={ctx.request.body}
           />
-        )
+        ),
+        {
+          name: user.name,
+          email: user.email,
+        },
       )
     }
   } else {

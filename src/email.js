@@ -1,9 +1,9 @@
 import sgMail from '@sendgrid/mail'
 
-export default async (email, name, subject, body) => {
+export default async (email, name, subject, body, replyTo) => {
   const msg = {
     from: { email: 'noreply@polymath.network', name: 'Polymath Network' },
-    reply_to: {
+    reply_to: replyTo || {
       email: 'tokenstudio@polymath.zendesk.com',
       name: 'Polymath Network',
     },
